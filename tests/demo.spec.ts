@@ -61,6 +61,17 @@ test.describe('Demo Test Scenarios', () => {
     // before filtering 9 cards are displayed after filtering 3 are displayed and 6 are hidden
     expect(hiddenCards).toBe(6)
 
+    // click on any card
+
+    await page.frameLocator('iframe[name="globalSqa"]').getByRole('link', { name: 'Selenium Online Training Selenium 3.0 Training Automation' }).click();
+    let cardVisible = await page.frameLocator('iframe[name="globalSqa"]').getByRole('heading', { name: 'Selenium 3.0 Training' }).isVisible({timeout:3000})
+    console.log(cardVisible)
+    expect(cardVisible).toBe(true)
+    let headingLoc = page.frameLocator('iframe[name="globalSqa"]').getByRole('heading', { name: 'Selenium 3.0 Training' })
+    await expect(headingLoc).toContainText('Selenium 3.0 Training')
+
+
+
   })
 
 
